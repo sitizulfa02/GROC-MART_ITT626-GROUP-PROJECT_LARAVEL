@@ -9,6 +9,18 @@ class Product extends Model
     public $table ='products'; //which table we refer
     protected $fillable=[
 
-        'name','description','price','quantity','category' //refer to content in Table days in SQLYOG
+        'product_type','description','price','quantity','category' //refer to content in Table days in SQLYOG
     ];
+
+    public function bookings()
+{
+    return $this->hasMany(Booking::class);
+}
+
+public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+
 }

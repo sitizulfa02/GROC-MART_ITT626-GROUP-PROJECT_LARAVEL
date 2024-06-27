@@ -70,7 +70,7 @@ Route::get('/categories/{category}/edit', 'CategoryController@edit')->name('cate
 //update
 Route::put('/categories/{category}', 'CategoryController@update')->name('categories.update');
 //delete@destroy
-Route::delete('/categories/{category}', 'CategoryController@destroy')->name('categoriess.destroy');
+Route::delete('/categories/{category}', 'CategoryController@destroy')->name('categories.destroy');
 
 //Location
 
@@ -89,7 +89,7 @@ Route::put('/locations/{location}', 'LocationController@update')->name('location
 //delete@destroy
 Route::delete('/locations/{location}', 'LocationController@destroy')->name('locations.destroy');
 
-//TCustomer Booking
+//Customer Booking
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/bookings', 'BookingController@index')->name('bookings.index');
@@ -105,6 +105,23 @@ Route::get('/bookings/{booking}/edit', 'BookingController@edit')->name('bookings
 Route::put('/bookings/{booking}', 'BookingController@update')->name('bookings.update');
 //delete@destroy
 Route::delete('/bookings/{booking}', 'BookingController@destroy')->name('bookings.destroy');
+
+//Payment 
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/payments', 'PaymentController@index')->name('payments.index');
+//create@write
+Route::get('/payments/create', 'PaymentController@create')->name('payments.create');
+//store@save
+Route::post('/payments', 'PaymentController@store')->name('payments.store');
+//show
+Route::get('/payments/{payment}', 'PaymentController@show')->name('payments.show');
+//edit
+Route::get('/payments/{payment}/edit', 'PaymentController@edit')->name('payments.edit');
+//update
+Route::put('/payments/{payment}', 'PaymentController@update')->name('payments.update');
+//delete@destroy
+Route::delete('/payments/{payment}', 'PaymentController@destroy')->name('payments.destroy');
 
 //Route ::resource('/students', 'StudentController')
 

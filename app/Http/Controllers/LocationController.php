@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class LocationController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,9 @@ class LocationController extends Controller
      */
     public function index()
     {
-        //
+        $locations = Location::all();
+  
+        return view('locations.index',compact('locations'));
     }
 
     /**
@@ -24,7 +32,7 @@ class LocationController extends Controller
      */
     public function create()
     {
-        //
+        return view('locations.create',compact('locations'));
     }
 
     /**
@@ -35,7 +43,15 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'store_name' => 'required',
+        ]);
+
+  
+        Location::create($request->all());
+   
+        return redirect()->route('locations.index')
+                        ->with('success','Location created successfully.');
     }
 
     /**
@@ -46,7 +62,7 @@ class LocationController extends Controller
      */
     public function show(Location $location)
     {
-        //
+        return view('locations.show',compact('location'));
     }
 
     /**
@@ -57,7 +73,8 @@ class LocationController extends Controller
      */
     public function edit(Location $location)
     {
-        //
+        $locations = Location::all();
+        return view('locations.edit',compact('location'));
     }
 
     /**
@@ -69,7 +86,14 @@ class LocationController extends Controller
      */
     public function update(Request $request, Location $location)
     {
-        //
+        $request->validate([
+            'store_name' => 'required',
+        ]);
+  
+        $location->update($request->all());
+  
+        return redirect()->route('locations.index')
+                        ->with('success','Locations updated successfully');
     }
 
     /**
@@ -80,6 +104,9 @@ class LocationController extends Controller
      */
     public function destroy(Location $location)
     {
-        //
+        $location->delete();
+
+       return redirect()->route('locations.index')
+       ->with('success','Locations deleted successfully');
     }
 }

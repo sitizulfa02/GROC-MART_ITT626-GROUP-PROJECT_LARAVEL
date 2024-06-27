@@ -11,4 +11,9 @@ class Location extends Model
 
         'store_name','address' //refer to content in Table days in SQLYOG
     ];
+
+    public function bookings()
+{
+    return $this->hasMany(Booking::class);
+}
 }

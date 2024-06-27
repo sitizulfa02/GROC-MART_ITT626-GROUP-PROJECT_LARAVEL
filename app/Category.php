@@ -14,5 +14,10 @@ class Category extends Model
         'category','description' //refer to content in Table days in SQLYOG
     ];
     //
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
 }
 

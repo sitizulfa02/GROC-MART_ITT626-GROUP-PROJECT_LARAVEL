@@ -1,9 +1,10 @@
 @extends('layouts.template')
 @section('content')
+<br>
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Add New Customers</h2>
+            <h2><b>Add New Customers</b></h2>
         </div>
        
     </div>
@@ -22,7 +23,7 @@
    
 <form action="{{ route('users.store') }}" method="POST">
     @csrf
-  
+  <br>
      <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-12">
             <div class="form-group">
